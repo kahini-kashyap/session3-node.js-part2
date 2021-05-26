@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd And Even Checker</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: "Nunito", sans-serif;
+            font-size: 20px;
+            margin-top: 30px;
+            background-color: rgb(27, 33, 49);
+            color: white;
+        }
+
+        #check {
+            font-family: "Nunito", sans-serif;
+            border: none;
+            border-radius: 5px;
+            padding: 9px;
+            font-size: 25px;
+            color: white;
+            background-color: rgb(39, 173, 39);
+            width: 100px;
+            cursor: pointer;
+        }
+
+        #check:hover {
+            border: 2px solid rgb(39, 173, 39);
+            background-color: transparent;
+            color: rgb(39, 173, 39);
+        }
+
+        #num {
+            font-family: "Nunito", sans-serif;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            font-size: 15px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .title {
+            margin-bottom: -8px;
+        }
+    </style>
+</head>
+
+<body>
+        <h1 class="title">Odd And Even Checker</h1>
+        <h2>Put a number and check if its odd or even!</h2>
+        <input type="number" id="num"><br>
+        <button id="check" onclick="check()">Check!</button>
+    <script>
+        function check() {
+            let num = document.getElementById("num").value;
+            let url = "/number/" + num;
+            fetch(url).then(function (res) {
+                return (res.json())
+            }).then(function (res2) {
+                alert(res2.message);
+            })
+            if (num == "") {
+                alert("Please put a number")
+            }
+        }
+    </script>
+</body>
+
+</html>
